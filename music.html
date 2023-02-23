@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SMCID</title>
+  <link rel="stylesheet" href="./resources/css/music.css">
+</head>
+<body>
+  <div class="user-upload" style="width: 20%; float:left">
+    <button class="record" type="submit" name="myFile">
+      <img src="./resources/images/record.jpeg" width=50%>
+      Record Audio
+    </button>
+  <input type="file" id="fileInput"> 
+  <button id="uploadButton">
+    <img src="./resources/images/upload.jpeg" width=50%>
+    Upload Audio
+  </button>
+  <script>
+
+    document.getElementById("uploadButton").onclick = () => {
+      let fileElement = document.getElementById('fileInput')
+
+      // check if user had selected a file
+      if (fileElement.files.length === 0) {
+        alert('please choose a file')
+        return
+      }
+
+      let file = fileElement.files[0]
+
+      let formData = new FormData();
+      formData.set('file', file);
+
+      axios.post("Users/ha/Projects/SMCID/resources/audio", formData, {
+        onUploadProgress: progressEvent => {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          console.log(`upload process: ${percentCompleted}%`);
+        }
+      })
+        .then(res => {
+          console.log(res.data)
+          console.log(res.data.url)
+        })
+    }
+
+  </script>
+    <button class="virtual-piano" type="submit">
+        <img src="./resources/images/piano.jpeg" width=50%>
+      Virtual Piano
+    </button>
+    
+  </div>
+  
+  <div class="instrument-list" style="width: 20%; float:right">
+    Instruments
+    <p></p>
+  </div>
+
+  <div class="music-sheet" style="width: 80%">
+      Music Sheet
+      <br>
+      <button class="edit" type="submit">
+        Edit
+      </button>
+
+      <button id="download" class="download" type="submit">
+        Download
+      </button>
+
+      <button class="share" type="submit">
+        Share
+      </button>
+
+      <button class="play" type="submit">
+          Play
+        </button>
+
+      <div class="cat_sheet cat_sheet--animate">
+          <span class="cat_sheet__lines">
+            <span class="cat_sheet__notes-wrapper">
+              <span class="cat_sheet__note cat_sheet__note--1"></span>
+              <span class="cat_sheet__note cat_sheet__note--2"></span>
+              <span class="cat_sheet__note cat_sheet__note--3"></span>
+              <span class="cat_sheet__note cat_sheet__note--4"></span>
+              <span class="cat_sheet__note cat_sheet__note--5"></span>
+              <span class="cat_sheet__note cat_sheet__note--6"></span>
+              <span class="cat_sheet__note cat_sheet__note--7"></span>
+              <span class="cat_sheet__note cat_sheet__note--8"></span>
+              <span class="cat_sheet__note cat_sheet__note--9"></span>
+              <span class="cat_sheet__note cat_sheet__note--10"></span>
+              <span class="cat_sheet__note cat_sheet__note--11"></span>
+              <span class="cat_sheet__note cat_sheet__note--12"></span>
+            </span>
+          </span>
+        </div>
+
+        <div class="cat_sheet cat_sheet--animate">
+            <span class="cat_sheet__lines">
+              <span class="cat_sheet__notes-wrapper">
+                <span class="cat_sheet__note cat_sheet__note--13"></span>
+                <span class="cat_sheet__note cat_sheet__note--14"></span>
+                <span class="cat_sheet__note cat_sheet__note--15"></span>
+                <span class="cat_sheet__note cat_sheet__note--16"></span>
+                <span class="cat_sheet__note cat_sheet__note--17"></span>
+                <span class="cat_sheet__note cat_sheet__note--18"></span>
+                <span class="cat_sheet__note cat_sheet__note--19"></span>
+                <span class="cat_sheet__note cat_sheet__note--20"></span>
+                <span class="cat_sheet__note cat_sheet__note--21"></span>
+                <span class="cat_sheet__note cat_sheet__note--22"></span>
+                <span class="cat_sheet__note cat_sheet__note--23"></span>
+                
+                
+              </span>
+            </span>
+          </div>
+        
+          <div class="cat_sheet cat_sheet--animate">
+              <span class="cat_sheet__lines">
+                <span class="cat_sheet__notes-wrapper">
+                    <span class="cat_sheet__note cat_sheet__note--24"></span>
+                    <span class="cat_sheet__note cat_sheet__note--25"></span>
+                    <span class="cat_sheet__note cat_sheet__note--26"></span>
+                    <span class="cat_sheet__note cat_sheet__note--27"></span>
+                    <span class="cat_sheet__note cat_sheet__note--28"></span>
+                    <span class="cat_sheet__note cat_sheet__note--29"></span>
+                    <span class="cat_sheet__note cat_sheet__note--30"></span>
+                    <span class="cat_sheet__note cat_sheet__note--31"></span>
+                    <span class="cat_sheet__note cat_sheet__note--32"></span>
+                    <span class="cat_sheet__note cat_sheet__note--33"></span>
+                    <span class="cat_sheet__note cat_sheet__note--34"></span>
+                    
+                </span>
+              </span>
+            </div>
+
+            <div class="cat_sheet cat_sheet--animate">
+                <span class="cat_sheet__lines">
+                  <span class="cat_sheet__notes-wrapper">
+                      <span class="cat_sheet__note cat_sheet__note--35"></span>
+                      <span class="cat_sheet__note cat_sheet__note--36"></span>
+                      <span class="cat_sheet__note cat_sheet__note--37"></span>
+                      <span class="cat_sheet__note cat_sheet__note--38"></span>
+                      <span class="cat_sheet__note cat_sheet__note--39"></span>
+                      <span class="cat_sheet__note cat_sheet__note--40"></span>
+                      <span class="cat_sheet__note cat_sheet__note--41"></span>
+                      <span class="cat_sheet__note cat_sheet__note--42"></span>
+                      <span class="cat_sheet__note cat_sheet__note--43"></span>
+                      <span class="cat_sheet__note cat_sheet__note--44"></span>
+                      <span class="cat_sheet__note cat_sheet__note--45"></span>
+                      
+                      
+                  </span>
+                </span>
+              </div>
+
+              <div class="cat_sheet cat_sheet--animate">
+                  <span class="cat_sheet__lines">
+                    <span class="cat_sheet__notes-wrapper">
+                        <span class="cat_sheet__note cat_sheet__note--46"></span>
+                        <span class="cat_sheet__note cat_sheet__note--47"></span>
+                        <span class="cat_sheet__note cat_sheet__note--48"></span>
+                        <span class="cat_sheet__note cat_sheet__note--49"></span>
+                        <span class="cat_sheet__note cat_sheet__note--50"></span>
+                        <span class="cat_sheet__note cat_sheet__note--51"></span>
+                        <span class="cat_sheet__note cat_sheet__note--52"></span>
+                        <span class="cat_sheet__note cat_sheet__note--53"></span>
+                        <span class="cat_sheet__note cat_sheet__note--54"></span>
+                        <span class="cat_sheet__note cat_sheet__note--55"></span>
+                        <span class="cat_sheet__note cat_sheet__note--56"></span>
+                        
+                        
+                    </span>
+                  </span>
+                </div>
+
+                <div class="cat_sheet cat_sheet--animate">
+                    <span class="cat_sheet__lines">
+                      <span class="cat_sheet__notes-wrapper">
+                          <span class="cat_sheet__note cat_sheet__note--57"></span>
+                          <span class="cat_sheet__note cat_sheet__note--58"></span>
+                          <span class="cat_sheet__note cat_sheet__note--59"></span>
+                          <span class="cat_sheet__note cat_sheet__note--60"></span>
+                          <span class="cat_sheet__note cat_sheet__note--61"></span>
+                          <span class="cat_sheet__note cat_sheet__note--62"></span>
+                          <span class="cat_sheet__note cat_sheet__note--63"></span>
+                          <span class="cat_sheet__note cat_sheet__note--64"></span>
+                          <span class="cat_sheet__note cat_sheet__note--65"></span>
+                          <span class="cat_sheet__note cat_sheet__note--66"></span>
+                          <span class="cat_sheet__note cat_sheet__note--67"></span>
+                          
+                          
+                      </span>
+                    </span>
+                  </div>
+
+                  <div class="cat_sheet cat_sheet--animate">
+                      <span class="cat_sheet__lines">
+                        <span class="cat_sheet__notes-wrapper">
+                            <span class="cat_sheet__note cat_sheet__note--68"></span>
+                            <span class="cat_sheet__note cat_sheet__note--69"></span>
+                            <span class="cat_sheet__note cat_sheet__note--70"></span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div class="cat_sheet cat_sheet--animate">
+                        <span class="cat_sheet__lines">
+                          <span class="cat_sheet__notes-wrapper">
+                          </span>
+                        </span>
+                      </div>
+
+                      <div class="cat_sheet cat_sheet--animate">
+                          <span class="cat_sheet__lines">
+                            <span class="cat_sheet__notes-wrapper">
+                            </span>
+                          </span>
+                        </div>
+  </div>
+  
+  
+
+  <script src="js/music.js"></script
+</body>
+</html>

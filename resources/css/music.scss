@@ -1,0 +1,744 @@
+//Reference: https://www.freecodecamp.org/news/how-to-use-sass-with-css/
+$cat_color-sheet: #000000;
+$cat_color-sheet-note: #000000;
+$_sheet-border: 1px solid $cat_color-sheet;
+$_sheet-padding: 0.3em;
+$_sheet-note-width: $_sheet-padding + 0.1em;
+
+@mixin font-size($size) {
+  font-size: #{$size}px;
+  font-size: #{$size/10}rem;
+}
+
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+@mixin animation-name($name...) {
+  -o-animation-name: $name;
+  -moz-animation-name: $name;
+  -webkit-animation-name: $name;
+  animation-name: $name;
+}
+
+@mixin animation-timing-function($timing...) {
+  -o-animation-timing-function: $timing;
+  -moz-animation-timing-function: $timing;
+  -webkit-animation-timing-function: $timing;
+  animation-timing-function: $timing;
+}
+
+@mixin animation-fill-mode($fill...) {
+  -o-animation-fill-mode: $fill;
+  -moz-animation-fill-mode: $fill;
+  -webkit-animation-fill-mode: $fill;
+  animation-fill-mode: $fill;
+}
+
+@mixin animation-duration($duration...) {
+  -o-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+
+@mixin animation-delay($delay...) {
+  -o-animation-delay: $delay;
+  -moz-animation-delay: $delay;
+  -webkit-animation-delay: $delay;
+  animation-delay: $delay;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button{
+    font-family: "Garamond";
+    font-weight: bold;
+    outline: 0;
+    background: rgb(132, 169, 238);
+    //width: 50%;
+    border: 0;
+    border-radius: 15px; 
+    //margin: 2em 2em 2em 2em;
+    //padding: 15px;
+    color: black;
+    font-size: 15px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.user-upload button {
+    font-family: "Garamond";
+    font-weight: bold;
+    outline: 0;
+    background: rgb(132, 169, 238);
+    width: 50%;
+    border: 0;
+    border-radius: 15px; 
+    margin: 2em 2em 2em 2em;
+    padding: 15px;
+    color: black;
+    font-size: 20px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.music-sheet {
+    //position: ;
+    text-align: center;
+    @include font-size(20);
+    font-family: "Garamond";
+    font-weight: bold;
+    top: 0;
+}
+
+.instrument-list {
+    text-align: center;
+    @include font-size(20);
+    font-family: "Garamond";
+    font-weight: bold;
+}
+
+.instrument-list p {
+    text-align: center;
+    @include font-size(16);
+    font-family: "Garamond";
+}
+
+.cat_sheet {
+    margin-top: 1.3em;
+    margin-bottom: 1.3em;
+    text-align: center;
+    line-height: 1.4;
+    @include font-size(20);
+    position: relative;
+    top: 10px;
+    left: 20%;
+}
+
+.cat_sheet__lines {
+    display: block;
+    position: relative;
+    border-top: $_sheet-border;
+    height: 0;
+    border-bottom: $_sheet-border;
+    padding-top: $_sheet-padding;
+    padding-bottom: $_sheet-padding + 0.03;
+    width: 80%;
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: $_sheet-padding;
+        padding-bottom: $_sheet-padding + 0.03;
+        border-top: $_sheet-border;
+    }
+
+    &:after {
+        border-bottom: $_sheet-border;
+    }
+
+    &:before {
+        position:absolute;
+        top: -0.4em;
+    }
+}
+
+.cat_sheet__notes-wrapper {
+    $_width: 22em;
+    position: absolute;
+    width: $_width;
+    top: 0;
+    left: 50%;
+    margin-left: -$_width/2;
+}
+
+%_sheet-stick-down {    
+    &:before {
+        content: '';
+        border-left: 1px solid $cat_color-sheet-note;
+        height: 1em;
+        position: relative;
+        left: -($_sheet-note-width/2);
+        top: -0.05em;
+    }
+}
+
+%_sheet-stick-up {
+    &:before {
+        content: '';
+        border-right: 1px solid $cat_color-sheet-note;
+        height: 1em;
+        position: relative;
+        left: ($_sheet-note-width/2);
+        top: -1.05em;
+    }   
+}
+
+.cat_sheet__note {
+    position: absolute;
+    height: $_sheet-padding;
+    width: $_sheet-note-width;
+    background-color: $cat_color-sheet-note;
+    border-radius: #{$_sheet-note-width "/" $_sheet-padding};
+
+    .cat_sheet--animate & {
+        opacity: 0;
+        @include animation-name(cat_fade-in);
+        @include animation-duration(0.8s);
+        @include animation-fill-mode(forwards);
+        @include animation-timing-function(linear);
+    }
+
+    &.cat_sheet__note--1 {
+        @extend %_sheet-stick-up;
+        left: 0em;
+        top: 0.65em;
+        @include animation-delay(80s);
+
+        &:after {
+            content: '';
+            display: block;
+            position: relative;
+            border-top: 3px solid $cat_color-sheet-note;
+            width: 1.15em;
+            top: -2.6em;
+            left: 0.33em;
+            @include rotate(-30);
+        }
+    }
+
+    &.cat_sheet__note--2 {
+        @extend %_sheet-stick-up;
+        left: 1em;
+        top: 0.18em;
+        @include animation-delay(15s);
+    }
+
+    &.cat_sheet__note--3 {
+        @extend %_sheet-stick-down;
+        left: 3em;
+        top: 0.18em;
+        @include animation-delay(15.1s);
+    }
+
+    &.cat_sheet__note--4 {
+        @extend %_sheet-stick-up;
+        left: 5em;
+        top: 0.33em;
+        @include animation-delay(15.2s);
+    }
+
+    &.cat_sheet__note--5 {
+        @extend %_sheet-stick-down;
+        left: 7em;
+        top: 0.18em;
+        @include animation-delay(15.3s);
+    }
+
+    &.cat_sheet__note--6 {
+        @extend %_sheet-stick-up;
+        left: 9em;
+        top: 0.5em;
+        @include animation-delay(15.4s);
+    }
+
+    &.cat_sheet__note--7 {
+        @extend %_sheet-stick-up;
+        left: 11em;
+        top: 0.5em;
+        @include animation-delay(15.5s);
+    }
+
+    &.cat_sheet__note--8 {
+        @extend %_sheet-stick-up;
+        left: 13em;
+        top: 0.65em;
+        @include animation-delay(15.6s);
+    }
+
+    &.cat_sheet__note--9 {
+        @extend %_sheet-stick-up;
+        left: 15em;
+        top: 0.33em;
+        @include animation-delay(15.7s);
+    }
+
+    &.cat_sheet__note--10 {
+        @extend %_sheet-stick-up;
+        left: 17em;
+        top: 0.65em;
+        @include animation-delay(15.8s);
+    }
+
+    &.cat_sheet__note--11 {
+        @extend %_sheet-stick-up;
+        left: 19em;
+        top: 0.33em;
+        @include animation-delay(15.9s);
+    }
+
+    &.cat_sheet__note--12 {
+        @extend %_sheet-stick-down;
+        left: 21em;
+        top: 0.13em;
+        background-color: transparent;
+        border: 1px solid $cat_color-sheet-note;
+        box-sizing: content-box;
+        @include animation-delay(16s);
+
+        &:before {
+            left: -($_sheet-note-width/2 + 0.03);
+        }
+    }
+
+    &.cat_sheet__note--13 {
+        @extend %_sheet-stick-up;
+        left: 1em;
+        top: 0.33em;
+        @include animation-delay(16.1s);
+    }
+
+    &.cat_sheet__note--14 {
+        @extend %_sheet-stick-up;
+        left: 3em;
+        top: 0.65em;
+        @include animation-delay(16.2s);
+    }
+
+    &.cat_sheet__note--15 {
+        @extend %_sheet-stick-up;
+        left: 5em;
+        top: 0.5em;
+        @include animation-delay(16.3s);
+    }
+
+    &.cat_sheet__note--16 {
+        @extend %_sheet-stick-up;
+        left: 7em;
+        top: 0.33em;
+        @include animation-delay(16.4s);
+    }
+
+    &.cat_sheet__note--17 {
+        @extend %_sheet-stick-up;
+        left: 9em;
+        top: 0.33em;
+        @include animation-delay(16.5s);
+    }
+
+    &.cat_sheet__note--18 {
+        @extend %_sheet-stick-up;
+        left: 11em;
+        top: 0.18em;
+        @include animation-delay(16.6s);
+    }
+
+    &.cat_sheet__note--19 {
+        @extend %_sheet-stick-up;
+        left: 13em;
+        top: 0.65em;
+        @include animation-delay(16.7s);
+    }
+
+    &.cat_sheet__note--20 {
+        @extend %_sheet-stick-up;
+        left: 15em;
+        top: 0.5em;
+        @include animation-delay(16.8s);
+    }
+
+    &.cat_sheet__note--21 {
+        @extend %_sheet-stick-up;
+        left: 17em;
+        top: 0.65em;
+        @include animation-delay(16.9s);
+    }
+
+    &.cat_sheet__note--22 {
+        @extend %_sheet-stick-up;
+        left: 19em;
+        top: 0.33em;
+        @include animation-delay(17s);
+    }
+
+    &.cat_sheet__note--23 {
+        @extend %_sheet-stick-up;
+        left: 21em;
+        top: 0.13em;
+        @include animation-delay(17.1s);
+    }
+
+    &.cat_sheet__note--24 {
+        @extend %_sheet-stick-up;
+        left: 0em;
+        top: 0.18em;
+        @include animation-delay(17.2s);
+    }
+
+    &.cat_sheet__note--25 {
+        @extend %_sheet-stick-up;
+        left: 2em;
+        top: 0.5em;
+        @include animation-delay(17.3s);
+    }
+
+    &.cat_sheet__note--26 {
+        @extend %_sheet-stick-up;
+        left: 4em;
+        top: 0.65em;
+        @include animation-delay(17.4s);
+    }
+
+    &.cat_sheet__note--27 {
+        @extend %_sheet-stick-up;
+        left: 6em;
+        top: 0.5em;
+        @include animation-delay(17.5s);
+    }
+
+    &.cat_sheet__note--28 {
+        @extend %_sheet-stick-up;
+        left: 8em;
+        top: 0.18em;
+        @include animation-delay(17.6s);
+    }
+
+    &.cat_sheet__note--29 {
+        @extend %_sheet-stick-up;
+        left: 10em;
+        top: 0.13em;
+        @include animation-delay(17.7s);
+    }
+
+    &.cat_sheet__note--30 {
+        @extend %_sheet-stick-up;
+        left: 12em;
+        top: 0.5em;
+        @include animation-delay(17.8s);
+    }
+
+    &.cat_sheet__note--31 {
+        @extend %_sheet-stick-up;
+        left: 14em;
+        top: 0.33em;
+        @include animation-delay(17.9s);
+    }
+
+    &.cat_sheet__note--32 {
+        @extend %_sheet-stick-up;
+        left: 16em;
+        top: 0.33em;
+        @include animation-delay(20s);
+    }
+
+    &.cat_sheet__note--33 {
+        @extend %_sheet-stick-up;
+        left: 18em;
+        top: 0.5em;
+        @include animation-delay(20.1s);
+    }
+
+    &.cat_sheet__note--34 {
+        @extend %_sheet-stick-up;
+        left: 20em;
+        top: 0.13em;
+        @include animation-delay(20.2s);
+    }
+
+    &.cat_sheet__note--35 {
+        @extend %_sheet-stick-up;
+        left: 1em;
+        top: 0.13em;
+        @include animation-delay(20.3s);
+    }
+
+    &.cat_sheet__note--36 {
+        @extend %_sheet-stick-up;
+        left: 3em;
+        top: 0.65em;
+        @include animation-delay(20.4s);
+    }
+
+    &.cat_sheet__note--37 {
+        @extend %_sheet-stick-up;
+        left: 5em;
+        top: 0.18em;
+        @include animation-delay(20.5s);
+    }
+
+    &.cat_sheet__note--38 {
+        @extend %_sheet-stick-up;
+        left: 7em;
+        top: 0.65em;
+        @include animation-delay(20.6s);
+    }
+
+    &.cat_sheet__note--39 {
+        @extend %_sheet-stick-up;
+        left: 9em;
+        top: 0.5em;
+        @include animation-delay(20.7s);
+    }
+
+    &.cat_sheet__note--40 {
+        @extend %_sheet-stick-up;
+        left: 11em;
+        top: 0.5em;
+        @include animation-delay(20.8s);
+    }
+
+    &.cat_sheet__note--41 {
+        @extend %_sheet-stick-up;
+        left: 13em;
+        top: 0.13em;
+        @include animation-delay(20.9s);
+    }
+    
+    &.cat_sheet__note--42 {
+        @extend %_sheet-stick-up;
+        left: 15em;
+        top: 0.33em;
+        @include animation-delay(21s);
+    }
+
+    &.cat_sheet__note--43 {
+        @extend %_sheet-stick-up;
+        left: 17em;
+        top: 0.33em;
+        @include animation-delay(21.1s);
+    }
+
+    &.cat_sheet__note--44 {
+        @extend %_sheet-stick-up;
+        left: 19em;
+        top: 0.5em;
+        @include animation-delay(21.2s);
+    }
+
+    &.cat_sheet__note--45 {
+        @extend %_sheet-stick-up;
+        left: 21em;
+        top: 0.18em;
+        @include animation-delay(21.3s);
+    }
+
+    &.cat_sheet__note--46 {
+        @extend %_sheet-stick-up;
+        left: 0em;
+        top: 0.5em;
+        @include animation-delay(21.4s);
+    }
+
+    &.cat_sheet__note--47 {
+        @extend %_sheet-stick-up;
+        left: 2em;
+        top: 0.5em;
+        @include animation-delay(21.5s);
+    }
+    
+    &.cat_sheet__note--48 {
+        @extend %_sheet-stick-up;
+        left: 4em;
+        top: 0.13em;
+        @include animation-delay(21.6s);
+    }
+
+    &.cat_sheet__note--49 {
+        @extend %_sheet-stick-up;
+        left: 6em;
+        top: 0.33em;
+        @include animation-delay(21.7s);
+    }
+
+    &.cat_sheet__note--50 {
+        @extend %_sheet-stick-up;
+        left: 8em;
+        top: 0.33em;
+        @include animation-delay(21.8s);
+    }
+
+    &.cat_sheet__note--51 {
+        @extend %_sheet-stick-up;
+        left: 10em;
+        top: 0.18em;
+        @include animation-delay(21.9s);
+    }
+
+    &.cat_sheet__note--52 {
+        @extend %_sheet-stick-up;
+        left: 12em;
+        top: 0.13em;
+        @include animation-delay(22s);
+    }
+
+    &.cat_sheet__note--53 {
+        @extend %_sheet-stick-up;
+        left: 14em;
+        top: 0.5em;
+        @include animation-delay(22.1s);
+    }
+    
+    &.cat_sheet__note--54 {
+        @extend %_sheet-stick-up;
+        left: 16em;
+        top: 0.18em;
+        @include animation-delay(22.2s);
+    }
+
+    &.cat_sheet__note--55 {
+        @extend %_sheet-stick-up;
+        left: 18em;
+        top: 0.65em;
+        @include animation-delay(22.3s);
+    }
+
+    &.cat_sheet__note--56 {
+        @extend %_sheet-stick-up;
+        left: 20em;
+        top: 0.65em;
+        @include animation-delay(22.4s);
+    }
+
+    &.cat_sheet__note--57 {
+        @extend %_sheet-stick-up;
+        left: 1em;
+        top: 0.5em;
+        @include animation-delay(22.5s);
+    }
+
+    &.cat_sheet__note--58 {
+        @extend %_sheet-stick-up;
+        left: 3em;
+        top: 0.13em;
+        @include animation-delay(22.6s);
+    }
+
+    &.cat_sheet__note--59 {
+        @extend %_sheet-stick-up;
+        left: 5em;
+        top: 0.65em;
+        @include animation-delay(22.7s);
+    }
+    
+    &.cat_sheet__note--60 {
+        @extend %_sheet-stick-up;
+        left: 7em;
+        top: 0.5em;
+        @include animation-delay(22.8s);
+    }
+
+    &.cat_sheet__note--61 {
+        @extend %_sheet-stick-up;
+        left: 9em;
+        top: 0.18em;
+        @include animation-delay(22.9s);
+    }
+
+    &.cat_sheet__note--62 {
+        @extend %_sheet-stick-up;
+        left: 11em;
+        top: 0.13em;
+        @include animation-delay(23s);
+    }
+
+    &.cat_sheet__note--63 {
+        @extend %_sheet-stick-up;
+        left: 13em;
+        top: 0.33em;
+        @include animation-delay(23.1s);
+    }
+
+    &.cat_sheet__note--64 {
+        @extend %_sheet-stick-up;
+        left: 15em;
+        top: 0.5em;
+        @include animation-delay(23.2s);
+    }
+
+    &.cat_sheet__note--65 {
+        @extend %_sheet-stick-up;
+        left: 17em;
+        top: 0.5em;
+        @include animation-delay(23.3s);
+    }
+    
+    &.cat_sheet__note--66 {
+        @extend %_sheet-stick-up;
+        left: 19em;
+        top: 0.13em;
+        @include animation-delay(23.4s);
+    }
+
+    &.cat_sheet__note--67 {
+        @extend %_sheet-stick-up;
+        left: 21em;
+        top: 0.18em;
+        @include animation-delay(23.5s);
+    }
+
+    &.cat_sheet__note--68 {
+        @extend %_sheet-stick-up;
+        left: 0em;
+        top: 0.33em;
+        @include animation-delay(23.6s);
+    }
+
+    &.cat_sheet__note--69 {
+        @extend %_sheet-stick-up;
+        left: 2em;
+        top: 0.65em;
+        @include animation-delay(23.7s);
+    }
+
+    &.cat_sheet__note--70 {
+        @extend %_sheet-stick-up;
+        left: 4em;
+        top: 0.5em;
+        @include animation-delay(23.8s);
+    }
+}
+
+@include keyframes(cat_fade-in) {
+    from {
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
+    }
+  }
+
+  body {
+    background: #CAE9F5;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;      
+  }

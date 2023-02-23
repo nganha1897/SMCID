@@ -1,0 +1,682 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+button {
+  font-family: "Garamond";
+  font-weight: bold;
+  outline: 0;
+  background: #84a9ee;
+  border: 0;
+  border-radius: 15px;
+  color: black;
+  font-size: 15px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.user-upload button {
+  font-family: "Garamond";
+  font-weight: bold;
+  outline: 0;
+  background: #84a9ee;
+  width: 50%;
+  border: 0;
+  border-radius: 15px;
+  margin: 2em 2em 2em 2em;
+  padding: 15px;
+  color: black;
+  font-size: 20px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.music-sheet {
+  text-align: center;
+  font-size: 20px;
+  font-size: 2rem;
+  font-family: "Garamond";
+  font-weight: bold;
+  top: 0;
+}
+
+.instrument-list {
+  text-align: center;
+  font-size: 20px;
+  font-size: 2rem;
+  font-family: "Garamond";
+  font-weight: bold;
+}
+
+.instrument-list p {
+  text-align: center;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-family: "Garamond";
+}
+
+.cat_sheet {
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
+  text-align: center;
+  line-height: 1.4;
+  font-size: 20px;
+  font-size: 2rem;
+  position: relative;
+  top: 10px;
+  left: 20%;
+}
+
+.cat_sheet__lines {
+  display: block;
+  position: relative;
+  border-top: 1px solid #000000;
+  height: 0;
+  border-bottom: 1px solid #000000;
+  padding-top: 0.3em;
+  padding-bottom: 0.33em;
+  width: 80%;
+}
+
+.cat_sheet__lines:before, .cat_sheet__lines:after {
+  content: '';
+  display: block;
+  width: 100%;
+  padding-top: 0.3em;
+  padding-bottom: 0.33em;
+  border-top: 1px solid #000000;
+}
+
+.cat_sheet__lines:after {
+  border-bottom: 1px solid #000000;
+}
+
+.cat_sheet__lines:before {
+  position: absolute;
+  top: -0.4em;
+}
+
+.cat_sheet__notes-wrapper {
+  position: absolute;
+  width: 22em;
+  top: 0;
+  left: 50%;
+  margin-left: -11em;
+}
+
+.cat_sheet__note.cat_sheet__note--3:before, .cat_sheet__note.cat_sheet__note--5:before, .cat_sheet__note.cat_sheet__note--12:before {
+  content: '';
+  border-left: 1px solid #000000;
+  height: 1em;
+  position: relative;
+  left: -0.2em;
+  top: -0.05em;
+}
+
+.cat_sheet__note.cat_sheet__note--1:before, .cat_sheet__note.cat_sheet__note--2:before, .cat_sheet__note.cat_sheet__note--4:before, .cat_sheet__note.cat_sheet__note--6:before, .cat_sheet__note.cat_sheet__note--7:before, .cat_sheet__note.cat_sheet__note--8:before, .cat_sheet__note.cat_sheet__note--9:before, .cat_sheet__note.cat_sheet__note--10:before, .cat_sheet__note.cat_sheet__note--11:before, .cat_sheet__note.cat_sheet__note--13:before, .cat_sheet__note.cat_sheet__note--14:before, .cat_sheet__note.cat_sheet__note--15:before, .cat_sheet__note.cat_sheet__note--16:before, .cat_sheet__note.cat_sheet__note--17:before, .cat_sheet__note.cat_sheet__note--18:before, .cat_sheet__note.cat_sheet__note--19:before, .cat_sheet__note.cat_sheet__note--20:before, .cat_sheet__note.cat_sheet__note--21:before, .cat_sheet__note.cat_sheet__note--22:before, .cat_sheet__note.cat_sheet__note--23:before, .cat_sheet__note.cat_sheet__note--24:before, .cat_sheet__note.cat_sheet__note--25:before, .cat_sheet__note.cat_sheet__note--26:before, .cat_sheet__note.cat_sheet__note--27:before, .cat_sheet__note.cat_sheet__note--28:before, .cat_sheet__note.cat_sheet__note--29:before, .cat_sheet__note.cat_sheet__note--30:before, .cat_sheet__note.cat_sheet__note--31:before, .cat_sheet__note.cat_sheet__note--32:before, .cat_sheet__note.cat_sheet__note--33:before, .cat_sheet__note.cat_sheet__note--34:before, .cat_sheet__note.cat_sheet__note--35:before, .cat_sheet__note.cat_sheet__note--36:before, .cat_sheet__note.cat_sheet__note--37:before, .cat_sheet__note.cat_sheet__note--38:before, .cat_sheet__note.cat_sheet__note--39:before, .cat_sheet__note.cat_sheet__note--40:before, .cat_sheet__note.cat_sheet__note--41:before, .cat_sheet__note.cat_sheet__note--42:before, .cat_sheet__note.cat_sheet__note--43:before, .cat_sheet__note.cat_sheet__note--44:before, .cat_sheet__note.cat_sheet__note--45:before, .cat_sheet__note.cat_sheet__note--46:before, .cat_sheet__note.cat_sheet__note--47:before, .cat_sheet__note.cat_sheet__note--48:before, .cat_sheet__note.cat_sheet__note--49:before, .cat_sheet__note.cat_sheet__note--50:before, .cat_sheet__note.cat_sheet__note--51:before, .cat_sheet__note.cat_sheet__note--52:before, .cat_sheet__note.cat_sheet__note--53:before, .cat_sheet__note.cat_sheet__note--54:before, .cat_sheet__note.cat_sheet__note--55:before, .cat_sheet__note.cat_sheet__note--56:before, .cat_sheet__note.cat_sheet__note--57:before, .cat_sheet__note.cat_sheet__note--58:before, .cat_sheet__note.cat_sheet__note--59:before, .cat_sheet__note.cat_sheet__note--60:before, .cat_sheet__note.cat_sheet__note--61:before, .cat_sheet__note.cat_sheet__note--62:before, .cat_sheet__note.cat_sheet__note--63:before, .cat_sheet__note.cat_sheet__note--64:before, .cat_sheet__note.cat_sheet__note--65:before, .cat_sheet__note.cat_sheet__note--66:before, .cat_sheet__note.cat_sheet__note--67:before, .cat_sheet__note.cat_sheet__note--68:before, .cat_sheet__note.cat_sheet__note--69:before, .cat_sheet__note.cat_sheet__note--70:before {
+  content: '';
+  border-right: 1px solid #000000;
+  height: 1em;
+  position: relative;
+  left: 0.2em;
+  top: -1.05em;
+}
+
+.cat_sheet__note {
+  position: absolute;
+  height: 0.3em;
+  width: 0.4em;
+  background-color: #000000;
+  border-radius: 0.4em / 0.3em;
+}
+
+.cat_sheet--animate .cat_sheet__note {
+  opacity: 0;
+  -webkit-animation-name: cat_fade-in;
+  animation-name: cat_fade-in;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.cat_sheet__note.cat_sheet__note--1 {
+  left: 0em;
+  top: 0.65em;
+  -webkit-animation-delay: 80s;
+  animation-delay: 80s;
+}
+
+.cat_sheet__note.cat_sheet__note--1:after {
+  content: '';
+  display: block;
+  position: relative;
+  border-top: 3px solid #000000;
+  width: 1.15em;
+  top: -2.6em;
+  left: 0.33em;
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+
+.cat_sheet__note.cat_sheet__note--2 {
+  left: 1em;
+  top: 0.18em;
+  -webkit-animation-delay: 15s;
+  animation-delay: 15s;
+}
+
+.cat_sheet__note.cat_sheet__note--3 {
+  left: 3em;
+  top: 0.18em;
+  -webkit-animation-delay: 15.1s;
+  animation-delay: 15.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--4 {
+  left: 5em;
+  top: 0.33em;
+  -webkit-animation-delay: 15.2s;
+  animation-delay: 15.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--5 {
+  left: 7em;
+  top: 0.18em;
+  -webkit-animation-delay: 15.3s;
+  animation-delay: 15.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--6 {
+  left: 9em;
+  top: 0.5em;
+  -webkit-animation-delay: 15.4s;
+  animation-delay: 15.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--7 {
+  left: 11em;
+  top: 0.5em;
+  -webkit-animation-delay: 15.5s;
+  animation-delay: 15.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--8 {
+  left: 13em;
+  top: 0.65em;
+  -webkit-animation-delay: 15.6s;
+  animation-delay: 15.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--9 {
+  left: 15em;
+  top: 0.33em;
+  -webkit-animation-delay: 15.7s;
+  animation-delay: 15.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--10 {
+  left: 17em;
+  top: 0.65em;
+  -webkit-animation-delay: 15.8s;
+  animation-delay: 15.8s;
+}
+
+.cat_sheet__note.cat_sheet__note--11 {
+  left: 19em;
+  top: 0.33em;
+  -webkit-animation-delay: 15.9s;
+  animation-delay: 15.9s;
+}
+
+.cat_sheet__note.cat_sheet__note--12 {
+  left: 21em;
+  top: 0.13em;
+  background-color: transparent;
+  border: 1px solid #000000;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s;
+}
+
+.cat_sheet__note.cat_sheet__note--12:before {
+  left: -0.23em;
+}
+
+.cat_sheet__note.cat_sheet__note--13 {
+  left: 1em;
+  top: 0.33em;
+  -webkit-animation-delay: 16.1s;
+  animation-delay: 16.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--14 {
+  left: 3em;
+  top: 0.65em;
+  -webkit-animation-delay: 16.2s;
+  animation-delay: 16.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--15 {
+  left: 5em;
+  top: 0.5em;
+  -webkit-animation-delay: 16.3s;
+  animation-delay: 16.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--16 {
+  left: 7em;
+  top: 0.33em;
+  -webkit-animation-delay: 16.4s;
+  animation-delay: 16.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--17 {
+  left: 9em;
+  top: 0.33em;
+  -webkit-animation-delay: 16.5s;
+  animation-delay: 16.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--18 {
+  left: 11em;
+  top: 0.18em;
+  -webkit-animation-delay: 16.6s;
+  animation-delay: 16.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--19 {
+  left: 13em;
+  top: 0.65em;
+  -webkit-animation-delay: 16.7s;
+  animation-delay: 16.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--20 {
+  left: 15em;
+  top: 0.5em;
+  -webkit-animation-delay: 16.8s;
+  animation-delay: 16.8s;
+}
+
+.cat_sheet__note.cat_sheet__note--21 {
+  left: 17em;
+  top: 0.65em;
+  -webkit-animation-delay: 16.9s;
+  animation-delay: 16.9s;
+}
+
+.cat_sheet__note.cat_sheet__note--22 {
+  left: 19em;
+  top: 0.33em;
+  -webkit-animation-delay: 17s;
+  animation-delay: 17s;
+}
+
+.cat_sheet__note.cat_sheet__note--23 {
+  left: 21em;
+  top: 0.13em;
+  -webkit-animation-delay: 17.1s;
+  animation-delay: 17.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--24 {
+  left: 0em;
+  top: 0.18em;
+  -webkit-animation-delay: 17.2s;
+  animation-delay: 17.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--25 {
+  left: 2em;
+  top: 0.5em;
+  -webkit-animation-delay: 17.3s;
+  animation-delay: 17.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--26 {
+  left: 4em;
+  top: 0.65em;
+  -webkit-animation-delay: 17.4s;
+  animation-delay: 17.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--27 {
+  left: 6em;
+  top: 0.5em;
+  -webkit-animation-delay: 17.5s;
+  animation-delay: 17.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--28 {
+  left: 8em;
+  top: 0.18em;
+  -webkit-animation-delay: 17.6s;
+  animation-delay: 17.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--29 {
+  left: 10em;
+  top: 0.13em;
+  -webkit-animation-delay: 17.7s;
+  animation-delay: 17.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--30 {
+  left: 12em;
+  top: 0.5em;
+  -webkit-animation-delay: 17.8s;
+  animation-delay: 17.8s;
+}
+
+.cat_sheet__note.cat_sheet__note--31 {
+  left: 14em;
+  top: 0.33em;
+  -webkit-animation-delay: 17.9s;
+  animation-delay: 17.9s;
+}
+
+.cat_sheet__note.cat_sheet__note--32 {
+  left: 16em;
+  top: 0.33em;
+  -webkit-animation-delay: 20s;
+  animation-delay: 20s;
+}
+
+.cat_sheet__note.cat_sheet__note--33 {
+  left: 18em;
+  top: 0.5em;
+  -webkit-animation-delay: 20.1s;
+  animation-delay: 20.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--34 {
+  left: 20em;
+  top: 0.13em;
+  -webkit-animation-delay: 20.2s;
+  animation-delay: 20.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--35 {
+  left: 1em;
+  top: 0.13em;
+  -webkit-animation-delay: 20.3s;
+  animation-delay: 20.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--36 {
+  left: 3em;
+  top: 0.65em;
+  -webkit-animation-delay: 20.4s;
+  animation-delay: 20.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--37 {
+  left: 5em;
+  top: 0.18em;
+  -webkit-animation-delay: 20.5s;
+  animation-delay: 20.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--38 {
+  left: 7em;
+  top: 0.65em;
+  -webkit-animation-delay: 20.6s;
+  animation-delay: 20.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--39 {
+  left: 9em;
+  top: 0.5em;
+  -webkit-animation-delay: 20.7s;
+  animation-delay: 20.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--40 {
+  left: 11em;
+  top: 0.5em;
+  -webkit-animation-delay: 20.8s;
+  animation-delay: 20.8s;
+}
+
+.cat_sheet__note.cat_sheet__note--41 {
+  left: 13em;
+  top: 0.13em;
+  -webkit-animation-delay: 20.9s;
+  animation-delay: 20.9s;
+}
+
+.cat_sheet__note.cat_sheet__note--42 {
+  left: 15em;
+  top: 0.33em;
+  -webkit-animation-delay: 21s;
+  animation-delay: 21s;
+}
+
+.cat_sheet__note.cat_sheet__note--43 {
+  left: 17em;
+  top: 0.33em;
+  -webkit-animation-delay: 21.1s;
+  animation-delay: 21.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--44 {
+  left: 19em;
+  top: 0.5em;
+  -webkit-animation-delay: 21.2s;
+  animation-delay: 21.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--45 {
+  left: 21em;
+  top: 0.18em;
+  -webkit-animation-delay: 21.3s;
+  animation-delay: 21.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--46 {
+  left: 0em;
+  top: 0.5em;
+  -webkit-animation-delay: 21.4s;
+  animation-delay: 21.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--47 {
+  left: 2em;
+  top: 0.5em;
+  -webkit-animation-delay: 21.5s;
+  animation-delay: 21.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--48 {
+  left: 4em;
+  top: 0.13em;
+  -webkit-animation-delay: 21.6s;
+  animation-delay: 21.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--49 {
+  left: 6em;
+  top: 0.33em;
+  -webkit-animation-delay: 21.7s;
+  animation-delay: 21.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--50 {
+  left: 8em;
+  top: 0.33em;
+  -webkit-animation-delay: 21.8s;
+  animation-delay: 21.8s;
+}
+
+.cat_sheet__note.cat_sheet__note--51 {
+  left: 10em;
+  top: 0.18em;
+  -webkit-animation-delay: 21.9s;
+  animation-delay: 21.9s;
+}
+
+.cat_sheet__note.cat_sheet__note--52 {
+  left: 12em;
+  top: 0.13em;
+  -webkit-animation-delay: 22s;
+  animation-delay: 22s;
+}
+
+.cat_sheet__note.cat_sheet__note--53 {
+  left: 14em;
+  top: 0.5em;
+  -webkit-animation-delay: 22.1s;
+  animation-delay: 22.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--54 {
+  left: 16em;
+  top: 0.18em;
+  -webkit-animation-delay: 22.2s;
+  animation-delay: 22.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--55 {
+  left: 18em;
+  top: 0.65em;
+  -webkit-animation-delay: 22.3s;
+  animation-delay: 22.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--56 {
+  left: 20em;
+  top: 0.65em;
+  -webkit-animation-delay: 22.4s;
+  animation-delay: 22.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--57 {
+  left: 1em;
+  top: 0.5em;
+  -webkit-animation-delay: 22.5s;
+  animation-delay: 22.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--58 {
+  left: 3em;
+  top: 0.13em;
+  -webkit-animation-delay: 22.6s;
+  animation-delay: 22.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--59 {
+  left: 5em;
+  top: 0.65em;
+  -webkit-animation-delay: 22.7s;
+  animation-delay: 22.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--60 {
+  left: 7em;
+  top: 0.5em;
+  -webkit-animation-delay: 22.8s;
+  animation-delay: 22.8s;
+}
+
+.cat_sheet__note.cat_sheet__note--61 {
+  left: 9em;
+  top: 0.18em;
+  -webkit-animation-delay: 22.9s;
+  animation-delay: 22.9s;
+}
+
+.cat_sheet__note.cat_sheet__note--62 {
+  left: 11em;
+  top: 0.13em;
+  -webkit-animation-delay: 23s;
+  animation-delay: 23s;
+}
+
+.cat_sheet__note.cat_sheet__note--63 {
+  left: 13em;
+  top: 0.33em;
+  -webkit-animation-delay: 23.1s;
+  animation-delay: 23.1s;
+}
+
+.cat_sheet__note.cat_sheet__note--64 {
+  left: 15em;
+  top: 0.5em;
+  -webkit-animation-delay: 23.2s;
+  animation-delay: 23.2s;
+}
+
+.cat_sheet__note.cat_sheet__note--65 {
+  left: 17em;
+  top: 0.5em;
+  -webkit-animation-delay: 23.3s;
+  animation-delay: 23.3s;
+}
+
+.cat_sheet__note.cat_sheet__note--66 {
+  left: 19em;
+  top: 0.13em;
+  -webkit-animation-delay: 23.4s;
+  animation-delay: 23.4s;
+}
+
+.cat_sheet__note.cat_sheet__note--67 {
+  left: 21em;
+  top: 0.18em;
+  -webkit-animation-delay: 23.5s;
+  animation-delay: 23.5s;
+}
+
+.cat_sheet__note.cat_sheet__note--68 {
+  left: 0em;
+  top: 0.33em;
+  -webkit-animation-delay: 23.6s;
+  animation-delay: 23.6s;
+}
+
+.cat_sheet__note.cat_sheet__note--69 {
+  left: 2em;
+  top: 0.65em;
+  -webkit-animation-delay: 23.7s;
+  animation-delay: 23.7s;
+}
+
+.cat_sheet__note.cat_sheet__note--70 {
+  left: 4em;
+  top: 0.5em;
+  -webkit-animation-delay: 23.8s;
+  animation-delay: 23.8s;
+}
+
+@-webkit-keyframes cat_fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cat_fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  background: #CAE9F5;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*# sourceMappingURL=music.css.map */
